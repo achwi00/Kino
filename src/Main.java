@@ -1,4 +1,4 @@
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Main
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException, ClassNotFoundException
     {
 
 //        HashMap<Character, HashMap<Integer, Boolean>> miejscaTest = new HashMap<>();
@@ -42,8 +42,8 @@ public class Main
         seans.zajmijMiejsce('A', 3);
         //seans.wyswietlMiejsca();
 
-        Klient klient = new Klient("Katarzyna", "Nowak", "knowak@gmail.com", seans);
-        klient.zarezerwujMiejsce('B', 5);
+        Klient klient0 = new Klient("Katarzyna", "Nowak", "knowak@gmail.com", seans);
+        klient0.zarezerwujMiejsce('B', 5);
         seans.wyswietlMiejsca();
 
         HashMap<Character, Integer> listaMiejsc = new HashMap<>();
@@ -57,6 +57,22 @@ public class Main
         System.out.println("zapisanie rezerwacji, odczyt rezerwacji: ");
         seans.zapiszRezerwacje();
         seans.odczytajRezerwacje();
+
+        System.out.println("Serializacja klient0:");
+        //nowy obiekt ObjectOutputStream do zapisu
+        ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream(".klient.dat"));
+        //zapisanie klienta
+        wy.writeObject(klient0);
+        wy.close();
+        //nowy obiekt ObjectInputStream do odczytu
+        ObjectInputStream we = new ObjectInputStream(new FileInputStream(".klient.dat"));
+        //odczyt z pliku
+        Klient k = (Klient) we.readObject();
+        //wypisanie na konsole danych i zamknięcie strumienia
+        System.out.println(k);
+        we.close();
+
+
 
     }
 }

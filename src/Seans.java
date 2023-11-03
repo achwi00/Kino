@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Seans {
+public class Seans implements Serializable{
     private String tytul;
     private LocalDate data;
     private LocalTime godzina;
@@ -72,6 +72,11 @@ public class Seans {
             ch++; //kolejny rzad
         }
 
+    }
+    @Override
+    public String toString()
+    {
+        return "Seans [tytul: "+ tytul + ", data: " + data + ", godzina: " + godzina + ", ograniczenie wiekowe:  " + ageRating + ",\nmiejsca:\n" + miejsca + "]";
     }
 
     public void zapiszRezerwacje() throws IOException //zapisz do pliku liste miejsc

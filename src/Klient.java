@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Klient {
+public class Klient implements Serializable
+{
     private String imie;
     private String nazwisko;
     private String mail;
@@ -20,6 +22,11 @@ public class Klient {
         this.mail = mail;
         this.seans = seans;
         miejsce = new HashMap<>();
+    }
+    @Override
+    public String toString()
+    {
+        return "Klient [imie: " + imie + ", nazwisko: " + nazwisko + ", mail:" + mail + ",\nseans:\n " + seans.toString() + "\nmiejsce:\n" + miejsce + "]";
     }
 
     public void zarezerwujMiejsce(Character character, Integer i)//rezerwacja jednego miejsca z poziomu klienta
