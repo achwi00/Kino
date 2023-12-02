@@ -38,8 +38,9 @@ public class Main
 //        }
 
         Seans seans = new Seans("TM", LocalDate.now(), LocalTime.MIDNIGHT, 16, 3, 5);
-        //seans.wyswietlMiejsca();
-        seans.zajmijMiejsce('A', 3);
+        seans.wyswietlMiejsca();
+
+        //seans.zajmijMiejsce('A', 3);
         //seans.wyswietlMiejsca();
 
         Klient klient0 = new Klient("Katarzyna", "Nowak", "knowak@gmail.com", seans);
@@ -50,8 +51,14 @@ public class Main
         listaMiejsc.put('B', 1);
         listaMiejsc.put('C', 4);
         listaMiejsc.put('D', 4);
-        seans.zajmijMiejsca(listaMiejsc);
-        System.out.println("Proba zajecia miejsca B1 i C14");
+        Klient klient1 = new Klient("Mariusz","Kowalski","mariusz123@02.com", seans);
+        klient1.zarezerwujMiejsca(listaMiejsc);
+        System.out.println("Proba zajecia miejsca B1, C4, D4");
+        seans.wyswietlMiejsca();
+
+        System.out.println("Proba zajecia miejsca B5");
+        Klient klient2 = new Klient("Barbara","Kwiatkowska", "barb33@gmail.com", seans);
+        klient2.zarezerwujMiejsce('B',5);
         seans.wyswietlMiejsca();
 
         System.out.println("zapisanie rezerwacji, odczyt rezerwacji: ");

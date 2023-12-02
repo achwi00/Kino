@@ -34,9 +34,13 @@ public class Klient implements Serializable
         if (this.seans.zajmijMiejsce(character, i))
         {
             miejsce.put(character, i);
+        }else {
+            System.out.println("Operacja niemozliwa, miejsce " + character + i + "jest juz niedostepne.");
         }
     }
 
+    //potrzebna zmiana struktury ktora jest podawana jako argument wywolania metody
+    //HashMap nie zezwoli na rezerwacje kilku miejsc w tym samym rzedzie
     public void zarezerwujMiejsca(HashMap<Character, Integer> siedzenia)//rezerwacja kilku miejsc z poziomu klienta
     {
         this.seans.zajmijMiejsca(siedzenia);
